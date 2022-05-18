@@ -1,6 +1,6 @@
 FROM ghcr.io/netbox-community/netbox
 COPY topo.yaml '/run/config/extra/topo/topo.yaml'
 RUN /opt/netbox/venv/bin/pip install netbox-topology-views \
-  && /opt/netbox/venv/bin/python3 /opt/netbox/netbox/manage.py collectstatic --no-input
+  && cp -r /opt/netbox/venv/lib/python3.9/site-packages/netbox_topology_views/static/netbox_topology_views /opt/netbox/netbox/static/
 
 
