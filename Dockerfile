@@ -7,6 +7,7 @@ RUN set -x \
   && pip3 install build \
   && python3 -m build \
   && pip3 install dist/*.whl \
+  && pip3 install requests pynetbox paramiko proxmoxer \
   && cd - \
   && rm -rf /tmp/netbox-proxbox \
   && sed -i "/^TEMPLATES_DIR =/a PROXBOX_TEMPLATE_DIR = BASE_DIR + '/netbox-proxbox/netbox_proxbox/templates/netbox_proxbox'" /opt/netbox/netbox/netbox/settings.py \
