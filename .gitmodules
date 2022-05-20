@@ -1,0 +1,3 @@
+[submodule "netbox-proxbox"]
+	path = netbox-proxbox
+	url = https://github.com/netdevopsbr/netbox-proxbox.git
