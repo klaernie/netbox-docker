@@ -11,6 +11,6 @@ RUN set -x \
   && rm -rf /tmp/netbox-proxbox \
   && /opt/netbox/venv/bin/pip install netbox-topology-views \
   && cp -r /opt/netbox/venv/lib/python3.9/site-packages/netbox_topology_views/static/netbox_topology_views /opt/netbox/netbox/static/ \
-  true
+  && true
 
 
