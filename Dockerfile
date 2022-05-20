@@ -4,7 +4,9 @@ COPY netbox-proxbox /tmp/netbox-proxbox
 RUN set -x \
   && source /opt/netbox/venv/bin/activate \
   && cd /tmp/netbox-proxbox \
-  && python3 setup.py develop \
+  && pip3 install build \
+  && python3 -m build \
+  && pip3 install dist/*.whl \
   && cd - \
   && rm -rf /tmp/netbox-proxbox \
   && /opt/netbox/venv/bin/pip install netbox-topology-views \
