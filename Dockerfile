@@ -1,5 +1,4 @@
 FROM ghcr.io/netbox-community/netbox
-COPY topo.yaml '/run/config/extra/topo/topo.yaml'
 COPY netbox-proxbox /tmp/netbox-proxbox
 RUN set -x \
   && source /opt/netbox/venv/bin/activate \
