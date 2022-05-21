@@ -9,10 +9,11 @@ RUN set -x \
   && pip3 install requests pynetbox paramiko proxmoxer \
   && cd - \
   && rm -rf /tmp/netbox-proxbox \
+  && SITEDIR=$(/opt/netbox/venv/bin/python3 -c 'import site; print(site.getsitepackages()[0])') \
   && sed -i "/^TEMPLATES_DIR =/a PROXBOX_TEMPLATE_DIR = BASE_DIR + '/netbox-proxbox/netbox_proxbox/templates/netbox_proxbox'" /opt/netbox/netbox/netbox/settings.py \
   && sed -i "s|'DIRS': \[TEMPLATES_DIR\],|'DIRS': [TEMPLATES_DIR, PROXBOX_TEMPLATE_DIR],|" /opt/netbox/netbox/netbox/settings.py \
   && /opt/netbox/venv/bin/pip install netbox-topology-views \
-  && cp -r /opt/netbox/venv/lib/python3.9/site-packages/netbox_topology_views/static/netbox_topology_views /opt/netbox/netbox/static/ \
+  && cp -r $SITEDIR/netbox_topology_views/static/netbox_topology_views /opt/netbox/netbox/static/ \
   && true
 
 
