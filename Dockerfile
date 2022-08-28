@@ -1,7 +1,7 @@
 FROM ghcr.io/netbox-community/netbox
 COPY netbox-proxbox /tmp/netbox-proxbox
 RUN set -x \
-  && source /opt/netbox/venv/bin/activate \
+  && . /opt/netbox/venv/bin/activate \
   && cd /tmp/netbox-proxbox \
   && pip3 install build \
   && python3 -m build \
