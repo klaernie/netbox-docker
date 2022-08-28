@@ -3,7 +3,7 @@ COPY netbox-proxbox /tmp/netbox-proxbox
 RUN set -x \
   && . /opt/netbox/venv/bin/activate \
   && cd /tmp/netbox-proxbox \
-  && pip3 install build \
+  && pip3 install build venv \
   && python3 -m build \
   && pip3 install dist/*.whl \
   && pip3 install requests pynetbox paramiko proxmoxer \
