@@ -1,6 +1,10 @@
 FROM ghcr.io/netbox-community/netbox:v3.7.0
 COPY netbox-proxbox /tmp/netbox-proxbox
 RUN set -x \
+  && export DEBIAN_FRONTEND=noninteractive \
+  && apt-get update -qq \
+  && apt-get install git
+  && rm -rf /var/lib/apt/lists/*
   && . /opt/netbox/venv/bin/activate \
   && cd /tmp/netbox-proxbox \
   && pip3 install build virtualenv \
