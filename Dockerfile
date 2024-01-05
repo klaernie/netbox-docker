@@ -1,4 +1,4 @@
-FROM ghcr.io/netbox-community/netbox
+FROM ghcr.io/netbox-community/netbox:v3.5.0
 COPY netbox-proxbox /tmp/netbox-proxbox
 RUN set -x \
   && . /opt/netbox/venv/bin/activate \
