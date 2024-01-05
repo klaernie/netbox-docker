@@ -1,4 +1,4 @@
-FROM ghcr.io/netbox-community/netbox:v3.6.0
+FROM ghcr.io/netbox-community/netbox:v3.7.0
 COPY netbox-proxbox /tmp/netbox-proxbox
 RUN set -x \
   && . /opt/netbox/venv/bin/activate \
@@ -12,7 +12,7 @@ RUN set -x \
   && SITEDIR=$(/opt/netbox/venv/bin/python3 -c 'import site; print(site.getsitepackages()[0])') \
 #  && sed -i "/^TEMPLATES_DIR =/a PROXBOX_TEMPLATE_DIR = '$SITEDIR/netbox_proxbox/templates/netbox_proxbox'" /opt/netbox/netbox/netbox/settings.py \
 #  && sed -i "s|'DIRS': \[TEMPLATES_DIR\],|'DIRS': [TEMPLATES_DIR, PROXBOX_TEMPLATE_DIR],|" /opt/netbox/netbox/netbox/settings.py \
-  && /opt/netbox/venv/bin/pip install netbox-topology-views \
+  && /opt/netbox/venv/bin/pip install git+https://github.com/mattieserver/netbox-topology-views@develop \
   && cp -r $SITEDIR/netbox_topology_views/static/netbox_topology_views /opt/netbox/netbox/static/ \
   && true
 
