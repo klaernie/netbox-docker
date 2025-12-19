@@ -15,7 +15,7 @@ RUN set -x \
   && rm -rf /tmp/netbox-proxbox
 
 RUN set -x \
-  && /usr/local/bin/uv pip install git+https://github.com/mattieserver/netbox-topology-views@develop \
+  && /usr/local/bin/uv pip install git+https://github.com/netbox-community/netbox-topology-views@develop \
   && true
 
 COPY upstream-repo/configuration/configuration.py /etc/netbox/config/configuration.py
