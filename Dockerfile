@@ -1,18 +1,21 @@
 FROM ghcr.io/netbox-community/netbox:v4.4.8
-COPY netbox-proxbox /tmp/netbox-proxbox
+
 RUN set -x \
   && export DEBIAN_FRONTEND=noninteractive \
   && apt-get update -qq \
   && apt-get install -y git python3-pip \
-  && rm -rf /var/lib/apt/lists/* \
+  && rm -rf /var/lib/apt/lists/*
+
+COPY netbox-proxbox /tmp/netbox-proxbox
+
+RUN set -x \
   && . /opt/netbox/venv/bin/activate \
   && cd /tmp/netbox-proxbox \
-  && pip3 install --break-system-packages build virtualenv \
-  && python3 -m build \
-  && pip3 install --break-system-packages dist/*.whl \
-  && pip3 install --break-system-packages requests pynetbox paramiko proxmoxer \
+  && pip3 install --break-system-packages . \
   && cd - \
-  && rm -rf /tmp/netbox-proxbox \
+  && rm -rf /tmp/netbox-proxbox
+
+RUN set -x \
   && SITEDIR=$(/opt/netbox/venv/bin/python3 -c 'import site; print(site.getsitepackages()[0])') \
 #  && sed -i "/^TEMPLATES_DIR =/a PROXBOX_TEMPLATE_DIR = '$SITEDIR/netbox_proxbox/templates/netbox_proxbox'" /opt/netbox/netbox/netbox/settings.py \
 #  && sed -i "s|'DIRS': \[TEMPLATES_DIR\],|'DIRS': [TEMPLATES_DIR, PROXBOX_TEMPLATE_DIR],|" /opt/netbox/netbox/netbox/settings.py \
