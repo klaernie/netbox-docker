@@ -7,10 +7,10 @@ RUN set -x \
   && rm -rf /var/lib/apt/lists/* \
   && . /opt/netbox/venv/bin/activate \
   && cd /tmp/netbox-proxbox \
-  && pip3 --break-system-packages install build virtualenv \
+  && pip3 install --break-system-packages build virtualenv \
   && python3 -m build \
-  && pip3 --break-system-packages install dist/*.whl \
-  && pip3 --break-system-packages install requests pynetbox paramiko proxmoxer \
+  && pip3 install --break-system-packages dist/*.whl \
+  && pip3 install --break-system-packages requests pynetbox paramiko proxmoxer \
   && cd - \
   && rm -rf /tmp/netbox-proxbox \
   && SITEDIR=$(/opt/netbox/venv/bin/python3 -c 'import site; print(site.getsitepackages()[0])') \
