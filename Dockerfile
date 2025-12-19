@@ -8,8 +8,8 @@ RUN set -x \
   && . /opt/netbox/venv/bin/activate \
   && cd /tmp/netbox-proxbox \
   && python3 -m build \
-  && pip3 install dist/*.whl \
-  && pip3 install requests pynetbox paramiko proxmoxer \
+  && pip3 --break-system-packages install dist/*.whl \
+  && pip3 --break-system-packages install requests pynetbox paramiko proxmoxer \
   && cd - \
   && rm -rf /tmp/netbox-proxbox \
   && SITEDIR=$(/opt/netbox/venv/bin/python3 -c 'import site; print(site.getsitepackages()[0])') \
