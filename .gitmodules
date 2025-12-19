@@ -1,3 +1,6 @@
 [submodule "netbox-proxbox"]
 	path = netbox-proxbox
 	url = https://github.com/klaernie/netbox-proxbox.git
+[submodule "upstream-repo"]
+	path = upstream-repo
+	url = https://github.com/netbox-community/netbox-docker.git

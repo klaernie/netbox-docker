@@ -19,3 +19,8 @@ RUN set -x \
   && . /opt/netbox/venv/bin/activate \
   && pip3 install --break-system-packages git+https://github.com/mattieserver/netbox-topology-views@develop \
   && true
+
+COPY upstream-repo/configuration/configuration.py /etc/netbox/config/configuration.py
+COPY plugins.py /etc/netbox/config/plugins.py
+RUN DEBUG="true" SECRET_KEY="dummydummydummydummydummydummydummydummydummydummy" \
+    /opt/netbox/venv/bin/python /opt/netbox/netbox/manage.py collectstatic --no-input
