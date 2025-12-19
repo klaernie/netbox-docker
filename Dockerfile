@@ -1,4 +1,4 @@
-FROM ghcr.io/netbox-community/netbox:v4.0.0
+FROM ghcr.io/netbox-community/netbox:v4.4.8
 COPY netbox-proxbox /tmp/netbox-proxbox
 RUN set -x \
   && export DEBIAN_FRONTEND=noninteractive \
