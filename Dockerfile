@@ -3,11 +3,10 @@ COPY netbox-proxbox /tmp/netbox-proxbox
 RUN set -x \
   && export DEBIAN_FRONTEND=noninteractive \
   && apt-get update -qq \
-  && apt-get install -y git python3-pip \
+  && apt-get install -y git python3-pip python3-build python3-virtualenv \
   && rm -rf /var/lib/apt/lists/* \
   && . /opt/netbox/venv/bin/activate \
   && cd /tmp/netbox-proxbox \
-  && pip3 install build virtualenv \
   && python3 -m build \
   && pip3 install dist/*.whl \
   && pip3 install requests pynetbox paramiko proxmoxer \
