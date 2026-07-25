@@ -3,6 +3,9 @@
   "extends": [
     "config:recommended"
   ],
+  "git-submodules": {
+		"enabled": true
+	},
   "includeForks": true,
   "forkProcessing": "enabled"
 }
