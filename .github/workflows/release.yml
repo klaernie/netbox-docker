@@ -33,6 +33,7 @@ jobs:
           submodules: recursive
 
       - id: version
+        name: pull netbox version from Dockerfile
         run: |
           set -x
           nbversion="$(grep FROM Dockerfile | cut -d: -f2)"
@@ -45,7 +46,7 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/netbox:${{ steps.version.output.nbversion }}
+            ghcr.io/${{ github.repository_owner }}/netbox:${{ steps.version.outputs.nbversion }}
             ghcr.io/${{ github.repository_owner }}/netbox:latest
 
       - name: Image digest
