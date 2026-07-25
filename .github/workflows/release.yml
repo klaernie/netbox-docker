@@ -34,7 +34,9 @@ jobs:
 
       - id: version
         run: |
-          echo "nbversion=$(grep FROM Dockerfile | cut -d: -f2)" >>"$GITHUB_OUTPUT"
+          set -x
+          nbversion="$(grep FROM Dockerfile | cut -d: -f2)"
+          echo "nbversion=$nbversion" >>"$GITHUB_OUTPUT"
 
       - name: Build and push
         id: docker_build
