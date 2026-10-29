@@ -1,4 +1,4 @@
-FROM ghcr.io/netbox-community/netbox:v4.7.3
+FROM ghcr.io/netbox-community/netbox:v4.7.4
 
 RUN set -x \
   && export DEBIAN_FRONTEND=noninteractive \
